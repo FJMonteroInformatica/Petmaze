@@ -17,8 +17,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from store import views
+from pet import views as petViews
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.hello)
+    path('', views.hello),
+    path('catalog/',petViews.hello)
 ]
