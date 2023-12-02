@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+
+    <head>
+        <title>Listado de Mascotas</title>
+
+        <!-- Añade el CSS de Bootstrap -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    </head>
+    <body>
+    {% include 'navbar.html' %}
+       
+       
+        <div class="container mt-4">
+            <h1 class="text-center mb-4">Catálogo de Mascotas</h1>
+            <div class="row">
+                {% for pet in pets %}
+                    <div class="col-md-4 mb-3">
+                        <div class="card">
+                            <!-- Suponiendo que hay una columna 'image_url' en el modelo Pet -->
+                            
+                            <img src="{{ pet.image }}" class="card-img-top" alt="{{ pet.name }}">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ pet.name }}</h5>
+                                <p class="card-text">
+                                    <strong>Categoría:</strong> {{ pet.get_category_display }}<br>
+                                    <strong>Raza:</strong> {{ pet.get_breed_display }}<br>
+                                    <strong>Edad:</strong> {{ pet.age }} años
+                                    <strong>Edad:</strong> {{ pet.image }} años
+                                    
+
+                                </p>
+                                <a href="#" class="btn btn-primary">Más detalles</a>
+                            </div>
+                        </div>
+                    </div>
+                {% empty %}
+                    <div class="col-12">
+                        <p class="text-center">No hay mascotas disponibles.</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    </body>
+    </html>
+</html>
